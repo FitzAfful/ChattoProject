@@ -22,21 +22,20 @@
  THE SOFTWARE.
 */
 
-import UIKit
+import ChattoAdditions
+import Foundation
 
-@UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+public protocol MessagesSelectorDelegate: class {
+    func messagesSelector(_ messagesSelector: MessagesSelectorProtocol, didSelectMessage: MessageModelProtocol)
+    func messagesSelector(_ messagesSelector: MessagesSelectorProtocol, didDeselectMessage: MessageModelProtocol)
+}
 
-    var window: UIWindow?
-
-    func application(_ application: UIApplication,
-                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let rootViewController = ChatExamplesViewController()
-        let window = UIWindow()
-        window.rootViewController = UINavigationController(rootViewController: rootViewController)
-        self.window = window
-        self.window?.makeKeyAndVisible()
-        return true
-    }
-
+public protocol MessagesSelectorProtocol: class {
+    var delegate: MessagesSelectorDelegate? { get set }
+    var isActive: Bool { get set }
+    func canSelectMessage(_ message: MessageModelProtocol) -> Bool
+    func isMessageSelected(_ message: MessageModelProtocol) -> Bool
+    func selectMessage(_ message: MessageModelProtocol)
+    func deselectMessage(_ message: MessageModelProtocol)
+    func selectedMessages() -> [MessageModelProtocol]
 }

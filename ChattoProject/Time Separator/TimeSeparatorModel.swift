@@ -22,21 +22,35 @@
  THE SOFTWARE.
 */
 
+import Foundation
 import UIKit
+import Chatto
 
-@UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class TimeSeparatorModel: ChatItemProtocol {
+    let uid: String
+    let type: String = TimeSeparatorModel.chatItemType
+    let date: String
 
-    var window: UIWindow?
-
-    func application(_ application: UIApplication,
-                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let rootViewController = ChatExamplesViewController()
-        let window = UIWindow()
-        window.rootViewController = UINavigationController(rootViewController: rootViewController)
-        self.window = window
-        self.window?.makeKeyAndVisible()
-        return true
+    static var chatItemType: ChatItemType {
+        return "TimeSeparatorModel"
     }
 
+    init(uid: String, date: String) {
+        self.date = date
+        self.uid = uid
+    }
+}
+
+extension Date {
+    // Have a time stamp formatter to avoid keep creating new ones. This improves performance
+    private static let weekdayAndDateStampDateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone.autoupdatingCurrent
+        dateFormatter.dateFormat = "EEEE, MMM dd yyyy" // "Monday, Mar 7 2016"
+        return dateFormatter
+    }()
+
+    func toWeekDayAndDateString() -> String {
+        return Date.weekdayAndDateStampDateFormatter.string(from: self)
+    }
 }

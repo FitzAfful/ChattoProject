@@ -24,19 +24,13 @@
 
 import UIKit
 
-@UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class SendingStatusCollectionViewCell: UICollectionViewCell {
 
-    var window: UIWindow?
+    @IBOutlet private weak var label: UILabel!
 
-    func application(_ application: UIApplication,
-                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let rootViewController = ChatExamplesViewController()
-        let window = UIWindow()
-        window.rootViewController = UINavigationController(rootViewController: rootViewController)
-        self.window = window
-        self.window?.makeKeyAndVisible()
-        return true
+    var text: NSAttributedString? {
+        didSet {
+            self.label.attributedText = self.text
+        }
     }
-
 }

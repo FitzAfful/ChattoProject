@@ -22,21 +22,47 @@
  THE SOFTWARE.
 */
 
+import Foundation
 import UIKit
+import Chatto
 
-@UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class TimeSeparatorCollectionViewCell: UICollectionViewCell {
 
-    var window: UIWindow?
+    private let label: UILabel = UILabel()
 
-    func application(_ application: UIApplication,
-                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let rootViewController = ChatExamplesViewController()
-        let window = UIWindow()
-        window.rootViewController = UINavigationController(rootViewController: rootViewController)
-        self.window = window
-        self.window?.makeKeyAndVisible()
-        return true
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.commonInit()
     }
 
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        self.commonInit()
+    }
+
+    private func commonInit() {
+        self.label.font = UIFont.systemFont(ofSize: 12)
+        self.label.textAlignment = .center
+        self.label.textColor = UIColor.gray
+        self.contentView.addSubview(label)
+    }
+
+    var text: String = "" {
+        didSet {
+            if oldValue != text {
+                self.setTextOnLabel(text)
+            }
+        }
+    }
+
+    private func setTextOnLabel(_ text: String) {
+        self.label.text = text
+        self.setNeedsLayout()
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.label.bounds.size = self.label.sizeThatFits(self.contentView.bounds.size)
+        self.label.center = self.contentView.center
+    }
 }

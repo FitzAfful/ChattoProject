@@ -24,19 +24,25 @@
 
 import UIKit
 
-@UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+final class ScrollToBottomButtonChatViewController: DemoChatViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-    var window: UIWindow?
-
-    func application(_ application: UIApplication,
-                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let rootViewController = ChatExamplesViewController()
-        let window = UIWindow()
-        window.rootViewController = UINavigationController(rootViewController: rootViewController)
-        self.window = window
-        self.window?.makeKeyAndVisible()
-        return true
+        let button = UIBarButtonItem(
+            title: "Scroll To Bottom",
+            style: .plain,
+            target: self,
+            action: #selector(handleTapOnScrollToBottomButton)
+        )
+        self.navigationItem.rightBarButtonItem = button
     }
 
+    @objc
+    private func handleTapOnScrollToBottomButton() {
+        guard self.chatItemCompanionCollection.count > 0 else { return }
+
+        let endIndex = self.chatItemCompanionCollection.endIndex
+        let lastItemIndex = self.chatItemCompanionCollection.index(endIndex, offsetBy: -1)
+		self.scrollToBottom( animated: true)
+    }
 }

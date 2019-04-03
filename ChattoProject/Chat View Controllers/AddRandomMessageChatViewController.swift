@@ -24,19 +24,21 @@
 
 import UIKit
 
-@UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AddRandomMessagesChatViewController: DemoChatViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-    var window: UIWindow?
-
-    func application(_ application: UIApplication,
-                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let rootViewController = ChatExamplesViewController()
-        let window = UIWindow()
-        window.rootViewController = UINavigationController(rootViewController: rootViewController)
-        self.window = window
-        self.window?.makeKeyAndVisible()
-        return true
+        let button = UIBarButtonItem(
+            title: "Add message",
+            style: .plain,
+            target: self,
+            action: #selector(addRandomMessage)
+        )
+        self.navigationItem.rightBarButtonItem = button
     }
 
+    @objc
+    private func addRandomMessage() {
+        self.dataSource.addRandomIncomingMessage()
+    }
 }

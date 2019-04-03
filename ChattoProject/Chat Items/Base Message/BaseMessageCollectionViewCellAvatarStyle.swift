@@ -22,21 +22,12 @@
  THE SOFTWARE.
 */
 
-import UIKit
+import Foundation
+import ChattoAdditions
 
-@UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
-
-    var window: UIWindow?
-
-    func application(_ application: UIApplication,
-                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let rootViewController = ChatExamplesViewController()
-        let window = UIWindow()
-        window.rootViewController = UINavigationController(rootViewController: rootViewController)
-        self.window = window
-        self.window?.makeKeyAndVisible()
-        return true
+class BaseMessageCollectionViewCellAvatarStyle: BaseMessageCollectionViewCellDefaultStyle {
+    override func avatarSize(viewModel: MessageViewModelProtocol) -> CGSize {
+        // Display avatar for both incoming and outgoing messages for demo purpose
+        return CGSize(width: 35, height: 35)
     }
-
 }

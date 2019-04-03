@@ -22,21 +22,20 @@
  THE SOFTWARE.
 */
 
-import UIKit
+import Foundation
+import ChattoAdditions
 
-@UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
-
-    var window: UIWindow?
-
-    func application(_ application: UIApplication,
-                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let rootViewController = ChatExamplesViewController()
-        let window = UIWindow()
-        window.rootViewController = UINavigationController(rootViewController: rootViewController)
-        self.window = window
-        self.window?.makeKeyAndVisible()
-        return true
+public class DemoPhotoMessageModel: PhotoMessageModel<MessageModel>, DemoMessageModelProtocol {
+    public override init(messageModel: MessageModel, imageSize: CGSize, image: UIImage) {
+        super.init(messageModel: messageModel, imageSize: imageSize, image: image)
     }
 
+    public var status: MessageStatus {
+        get {
+            return self._messageModel.status
+        }
+        set {
+            self._messageModel.status = newValue
+        }
+    }
 }
