@@ -21,7 +21,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import ChattoAdditions
+import UIKit
+import Foundation
 
 final class DemoCompoundMessageViewModel: DecoratedMessageViewModelProtocol, DemoMessageViewModelProtocol {
 

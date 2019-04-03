@@ -23,8 +23,9 @@
 */
 
 import UIKit
-import Chatto
-import ChattoAdditions
+import Foundation
+
+
 
 class DemoChatViewController: BaseChatViewController {
     var shouldUseAlternativePresenter: Bool = false
@@ -87,16 +88,16 @@ class DemoChatViewController: BaseChatViewController {
         )
         photoMessagePresenter.baseCellStyle = BaseMessageCollectionViewCellAvatarStyle()
 
-		let compoundPresenterBuilder = PhotoMessagePresenterBuilder(
-            viewModelBuilder: DemoCompoundMessageViewModelBuilder(),
-            interactionHandler: GenericMessageHandler(baseHandler: self.baseMessageHandler),
-            accessibilityIdentifier: nil,
-            contentFactories: [
-                .init(DemoTextMessageContentFactory()),
-                .init(DemoImageMessageContentFactory()),
-                .init(DemoDateMessageContentFactory())
-            ]
-        )
+		let compoundPresenterBuilder = CompoundMessagePresenterBuilder(
+			viewModelBuilder: DemoCompoundMessageViewModelBuilder(),
+			interactionHandler: GenericMessageHandler(baseHandler: self.baseMessageHandler),
+			accessibilityIdentifier: nil,
+			contentFactories: [
+				.init(DemoTextMessageContentFactory()),
+				.init(DemoImageMessageContentFactory()),
+				.init(DemoDateMessageContentFactory())
+			]
+		)
         compoundPresenterBuilder.baseCellStyle = BaseMessageCollectionViewCellAvatarStyle()
 
         return [

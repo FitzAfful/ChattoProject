@@ -22,8 +22,8 @@
 // THE SOFTWARE.
 
 import UIKit
-import ChattoAdditions
-import Chatto
+
+
 
 struct DemoDateMessageContentFactory: MessageContentFactoryProtocol {
 

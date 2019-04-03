@@ -22,7 +22,7 @@
 // THE SOFTWARE.
 
 import UIKit
-import Chatto
+
 
 final class UpdateItemTypeViewController: DemoChatViewController {
 

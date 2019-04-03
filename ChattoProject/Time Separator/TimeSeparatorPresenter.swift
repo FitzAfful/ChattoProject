@@ -24,7 +24,7 @@
 
 import Foundation
 import UIKit
-import Chatto
+
 
 public class TimeSeparatorPresenterBuilder: ChatItemPresenterBuilderProtocol {
 

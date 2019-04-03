@@ -22,8 +22,8 @@
 // THE SOFTWARE.
 
 import UIKit
-import ChattoAdditions
-import Chatto
+
+
 
 struct DemoImageMessageContentFactory: MessageContentFactoryProtocol {
     func canCreateMessageModule(forModel model: DemoCompoundMessageModel) -> Bool {

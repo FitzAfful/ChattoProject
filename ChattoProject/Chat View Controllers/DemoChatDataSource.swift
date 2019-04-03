@@ -22,8 +22,9 @@
  THE SOFTWARE.
 */
 
+import UIKit
 import Foundation
-import Chatto
+
 
 class DemoChatDataSource: ChatDataSourceProtocol {
     var nextMessageId: Int = 0

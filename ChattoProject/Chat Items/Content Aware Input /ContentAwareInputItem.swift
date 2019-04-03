@@ -22,7 +22,8 @@
  THE SOFTWARE.
  */
 
-import ChattoAdditions
+import UIKit
+import Foundation
 
 open class ContentAwareInputItem {
     public var textInputHandler: ((String) -> Void)?

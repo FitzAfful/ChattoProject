@@ -23,7 +23,7 @@
 */
 
 import Foundation
-import Chatto
+
 
 public enum InsertPosition {
     case top

@@ -22,9 +22,9 @@
  THE SOFTWARE.
 */
 
+import UIKit
 import Foundation
-import Chatto
-import ChattoAdditions
+
 
 class DemoChatMessageFactory {
     private static let demoText =
@@ -131,7 +131,7 @@ extension DemoChatMessageFactory {
     private static let overviewMessages: [DemoMessage] = [
         .text("Welcome to Chatto! A lightweight Swift framework to build chat apps"),
         .text("It calculates sizes in the background for smooth pagination and rotation, and it can deal with thousands of messages with a sliding data source"),
-        .text("Along with Chatto there's ChattoAdditions, with bubbles and the input component"),
+        .text("Along with Chatto there's Chatto, with bubbles and the input component"),
         .text("This is a TextMessageCollectionViewCell. It uses UITextView with data detectors so you can interact with urls: https://github.com/badoo/Chatto, phone numbers: 07400000000, dates: 3 jan 2016 and others"),
         .image("pic-test-1"),
         .image("pic-test-2"),

@@ -22,9 +22,10 @@
  THE SOFTWARE.
 */
 
+import UIKit
 import Foundation
-import Chatto
-import ChattoAdditions
+
+
 
 final class DemoChatItemsDecorator: ChatItemsDecoratorProtocol {
     private struct Constants {
